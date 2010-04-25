@@ -1,0 +1,92 @@
+*drupal6complete.txt* Documentation for drupal6complete
+
+Script  : drupal6complete.vim - Omnicompletion for Drupal 6
+Author  : Adam Courtemanche
+Email   : <adam.courtemanche@gmail.com>
+Changed : 04/25/2010
+
+==============================================================================
+OVERVIEW                                                *drupal6complete-intro*
+
+This document explains the basics of the drupal6complete script. The script 
+will add omnicompletion for the Drupal 6 API through the use of 
+auto-generated ctags.
+
+==============================================================================
+USAGE                                                   *drupal6complete-usage*
+
+The following should be added to your .vimrc file to trigger the plugin:
+>
+    imap <buffer> <C-d> <C-\><C-O>:call drupal6complete#Map()<CR><C-X><C-O>
+<
+By default (shown above) you hit "Ctrl-d" to autocomplete. So, for example,
+I can type "drupal_get_" followed by "Ctrl-d" and I'll be presented with any
+matches.
+
+The <C-d> can be changed to whatever trigger you would like. <C-C>d, for 
+example, would trigger the completion on "Ctrl-c", immediately followed by 
+hitting 'd'.
+
+==============================================================================
+CONFIGURATION           *drupal6complete-configuration* *drupal6complete-ctags*
+
+This script doesn't require or offer too many configuration options (at the
+time of writing).
+
+Automatic Parenthesis~
+Function suggestions can have a ( automatically applied by setting the
+following variable in your .vimrc file: >
+    let g:drupal6complete_add_paren = 1
+<
+Completion Results~
+By default, omni completion doesn't show the menu if only one result is found.
+The following setting will show the menu even when there is only one match: >
+    set cot+=menuone
+<
+==============================================================================
+DEVELOPER INFORMATION                              *drupal6complete-developers*
+
+The following information is for developers, and attempts to explain how the
+datasource for the drupal6complete is created.
+
+You will need a current version of Exuberant ctags to use all of the options 
+required. You can obtain the latest version here: http://ctags.sourceforge.net
+
+You can feed ctags specific files and directories, and it will automatically 
+create a tags file. This file will require some cleanup before you can use
+it for the plugin. You will want to run a command like below from the root of 
+a Drupal installation. You can feed ctags more directories and files than
+the ones in this example.
+
+Simple example (Drupal core only) >
+    ctags --php-kinds=-v --langmap=php:.module.inc -R 
+    \ includes/* modules/* themes/engines/* 
+<
+Advanced example (Drupal core with a specific few modules) >
+    ctags --php-kinds=-v --langmap=php:.module.inc -R 
+    \ includes/* modules/* themes/engines/* sites/all/modules/views/*
+    \ sites/all/themes/zen/*
+<
+
+After running the ctags command and checking the resulting file for 
+double-quotes (and replacing them with single quotes), these commands will 
+clean up the tags, and put them into "list" form. >
+    :%s/\t\/\^/\t/g
+    :%s/\$\/;"//g
+    :%s/^/\\ ["/g
+    :%s/\t/","/g
+    :%s/$/"],
+<
+Be very careful about the double-quotes. If there are ANY double quotes within
+any of the strings, there will be a problem. On occasion, you may not be able
+to replace the double-quotes with singles. If this is the case, just wipe out
+the string and replace with something like "*** SEE includes/xyz.module *** to
+let the user know where to look. This has only happened on 2 occasions in the
+core Drupal6 list that is the default for this module.
+
+After you have your nicely formatted tags, you can use the list items in the
+plugin. Note that the list will not be automatically sorted for various
+reasons. Try to keep your tags in order if you modify the tags list within the
+plugin.
+
+vim:tw=78:ts=8:ft=help:norl:
