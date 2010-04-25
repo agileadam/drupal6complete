@@ -2,15 +2,17 @@
 
 Script  : drupal6complete.vim - Omnicompletion for Drupal 6
 Author  : Adam Courtemanche
-Email   : <adam.courtemanche@gmail.com>
+Email   : <agileadam@gmail.com>
 Changed : 04/25/2010
 
 ==============================================================================
 OVERVIEW                                                *drupal6complete-intro*
 
-This document explains the basics of the drupal6complete script. The script 
-will add omnicompletion for the Drupal 6 API through the use of 
-auto-generated ctags.
+The drupal6complete plugin will add omnicompletion for the Drupal 6 API 
+through the use of auto-generated ctags. The plugin will only serve completion
+matches for the Drupal 6 core. In the future, expect to see another plugin 
+from me that will allow you to generate your own completion matches for 
+contributed modules as well.
 
 ==============================================================================
 USAGE                                                   *drupal6complete-usage*
@@ -43,6 +45,16 @@ By default, omni completion doesn't show the menu if only one result is found.
 The following setting will show the menu even when there is only one match: >
     set cot+=menuone
 <
+==============================================================================
+SUPPORT                        *drupal6complete-support* *drupal6complete-help*
+
+If you have problems with the plugin, you can add an issue to the project page
+on github (login required, signup is free). The issues page is located at:
+http://github.com/agileadam/drupal6complete/issues 
+
+Please submit an issue if the plugin is missing a function or constant, or is
+providing incorrect information about a function or constant.
+
 ==============================================================================
 DEVELOPER INFORMATION                              *drupal6complete-developers*
 

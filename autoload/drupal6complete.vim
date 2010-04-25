@@ -1,8 +1,7 @@
-" drupal6complete.vim	: Omnicompletion for Drupal 6
-" Version				: 0.2
-" Maintainer			: Adam Courtemanche<agileadam@gmail.com>
-" Last modified 		: 04/24/10
-" License				: This script is released under the Vim License
+" drupal6complete.vim  : Omnicompletion for Drupal 6 core
+" Version              : 0.2
+" Maintainer           : Adam Courtemanche<agileadam@gmail.com>
+" Last modified        : 04/25/10
 
 " set the omnifunc option to this plugin's completion function
 " if the omnifunc option is not already set
