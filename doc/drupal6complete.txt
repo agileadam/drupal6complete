@@ -81,7 +81,7 @@ Advanced example (Drupal core with a specific few modules) >
 <
 
 After running the ctags command and checking the resulting file for 
-double-quotes (and replacing them with single quotes), these commands will 
+double-quotes (and escaping them), these commands will 
 clean up the tags, and put them into "list" form. >
     :%s/\t\/\^/\t/g
     :%s/\$\/;"//g
@@ -89,16 +89,14 @@ clean up the tags, and put them into "list" form. >
     :%s/\t/","/g
     :%s/$/"],
 <
-Be very careful about the double-quotes. If there are ANY double quotes within
-any of the strings, there will be a problem. On occasion, you may not be able
-to replace the double-quotes with singles. If this is the case, just wipe out
-the string and replace with something like "*** SEE includes/xyz.module *** to
-let the user know where to look. This has only happened on 2 occasions in the
-core Drupal6 list that is the default for this module.
+Be very careful about the double-quotes. If there are ANY double-quotes within
+any of the strings, there will be a problem. If you have trouble escaping the
+double-quotes, just wipe out the string and replace with something like 
+*** See path/to/xyz.module *** to let the user know where to look.
 
 After you have your nicely formatted tags, you can use the list items in the
 plugin. Note that the list will not be automatically sorted for various
-reasons. Try to keep your tags in order if you modify the tags list within the
+reasons. Keep the tags in order if you modify the tags list within the
 plugin.
 
 vim:tw=78:ts=8:ft=help:norl:

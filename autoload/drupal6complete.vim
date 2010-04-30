@@ -930,7 +930,7 @@ function! drupal6complete#GetKeywords()
 		\ ["drupal_get_content","includes/common.inc","function drupal_get_content($region = NULL, $delimiter = ' ') {","f"],
 		\ ["drupal_get_css","includes/common.inc","function drupal_get_css($css = NULL) {","f"],
 		\ ["drupal_get_destination","includes/common.inc","function drupal_get_destination() {","f"],
-		\ ["drupal_get_feeds","includes/common.inc","function drupal_get_feeds($delimiter = '\\n') {","<-- *** REPLACE with double quotes ***","f"],
+		\ ["drupal_get_feeds","includes/common.inc","function drupal_get_feeds($delimiter = \"\\n\") {","f"],
 		\ ["drupal_get_filename","includes/bootstrap.inc","function drupal_get_filename($type, $name, $filename = NULL) {","f"],
 		\ ["drupal_get_form","includes/form.inc","function drupal_get_form($form_id) {","f"],
 		\ ["drupal_get_headers","includes/common.inc","function drupal_get_headers() {","f"],
